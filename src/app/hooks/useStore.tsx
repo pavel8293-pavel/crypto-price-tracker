@@ -9,6 +9,7 @@ import { ISO_CURRENCIES } from "../constants";
 export const useStore = (): UseStore => {
     const [allCoins, setAllCoins] = useState<UpdatedNormalizedCoinEntity | undefined>(undefined);
     const [allCoinsKeys, setAllCoinsKeys] = useState<string[]>([]);
+
     const [coinPrices, setCoinPrices] = useState<CoinPriceModel | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -17,10 +18,12 @@ export const useStore = (): UseStore => {
     useEffect(() => {
         async function getAllCurrencies() {
             setIsLoading(true);
+
             const coins = await apiGetAllCoins();
             const { transformedCoins, coinsKeys } = transformCoinData(coins.Data);
             setAllCoins(transformedCoins);
             setAllCoinsKeys(coinsKeys);
+
             setIsLoading(false);
         }
 

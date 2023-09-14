@@ -7,10 +7,11 @@ import Card from "./card";
 import { useAllCoinsStyles } from "./styles";
 import clsx from "clsx";
 import ResetAllButton from "../components/resetAllButton";
+import { FullscreenLoader } from "../components/fullscreenLoader";
 
 const AllCoins = () => {
     const styles = useAllCoinsStyles();
-    const { allCoins, allCoinsKeys } = useStoreContext();
+    const { allCoins, allCoinsKeys, isLoading } = useStoreContext();
 
     const content = useMemo(() => {
         if (!allCoins) {
@@ -30,6 +31,10 @@ const AllCoins = () => {
             </div>
         );
     }, [styles.buttons, styles.container]);
+
+    if (isLoading) {
+        <FullscreenLoader />;
+    }
 
     return (
         <BasicLayout title={localization.allCoinsTitle} actions={actions}>

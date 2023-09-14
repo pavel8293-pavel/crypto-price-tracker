@@ -18,7 +18,7 @@ const CardWithCurrencies = ({ currencies, ...props }: CardProps) => {
             return null;
         }
         return currenciesKeys.map(currency => {
-            return <Typography>{`${currency}: ${currencies?.[currency]}`}</Typography>;
+            return <Typography key={currency}>{`${currency}: ${currencies?.[currency]}`}</Typography>;
         });
     }, [currencies]);
 

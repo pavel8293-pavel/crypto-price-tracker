@@ -6,10 +6,11 @@ import GoToAllCoinsButton from "./GoToAllCoinsButton";
 import CardWithCurrencies from "./cardWithCurrencies";
 import { useTrackCoinsStyles } from "./styles";
 import { GET_COIN_PRICES_INTERVAL_MIL_SEC } from "../constants";
+import { FullscreenLoader } from "../components/fullscreenLoader";
 
 const TrackCoins = () => {
     const styles = useTrackCoinsStyles();
-    const { selectedCoins, getCoinPrices, coinPrices, allCoins } = useStoreContext();
+    const { selectedCoins, getCoinPrices, coinPrices, allCoins, isLoading } = useStoreContext();
 
     const content = useMemo(() => {
         if (!allCoins) {
@@ -36,11 +37,17 @@ const TrackCoins = () => {
         };
 
         fetchData();
-        const interval = setInterval(fetchData, GET_COIN_PRICES_INTERVAL_MIL_SEC);
+        const interval = setInterval(async () => {
+            await fetchData();
+        }, GET_COIN_PRICES_INTERVAL_MIL_SEC);
 
         return () => clearInterval(interval);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    if (isLoading) {
+        <FullscreenLoader />;
+    }
 
     return (
         <BasicLayout title={localization.trackCoinsTitle} actions={<GoToAllCoinsButton />}>
