@@ -2,8 +2,8 @@ import { lazy } from "react";
 import RouteValue from "./interface";
 import routeNames from "./routeNames";
 
-const AllCurrencies = lazy(() => import("../allCurrencies"));
-const TrackCurrencies = lazy(() => import("../trackCurrencies"));
+const AllCurrencies = lazy(() => import("../allCoins"));
+const TrackCurrencies = lazy(() => import("../trackCoins"));
 
 const routes: RouteValue[] = [
     {

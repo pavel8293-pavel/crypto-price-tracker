@@ -15,7 +15,7 @@ const ApplicationRouter: FunctionComponent<ApplicationRouterProps> = ({ history 
         <Suspense fallback={<FullscreenLoader />}>
             <Switch>
                 {routes.map(route => (
-                    <Route {...route} />
+                    <Route key={route.name} {...route} />
                 ))}
                 <Route exact path="/">
                     <Redirect to={routeNames.ALL_CURRENCIES} />
