@@ -26,6 +26,12 @@ export const useCoinStorage = (): UseCoinStorage => {
         setItems(updatedSelectedCoins);
     };
 
+    const removeItems = () => {
+        setSelectedCoins([]);
+        setItems([]);
+    };
+
+
     const checkIfCoinSelected = (item: string) => {
         return selectedCoins.includes(item);
     };
@@ -41,5 +47,5 @@ export const useCoinStorage = (): UseCoinStorage => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return { selectedCoins, removeItem, setItem, checkIfCoinSelected };
+    return { selectedCoins, removeItem, removeItems, setItem, checkIfCoinSelected };
 };

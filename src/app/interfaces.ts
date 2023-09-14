@@ -40,6 +40,7 @@ export interface UseStore extends UseCoinStorage {
 export interface UseCoinStorage {
     selectedCoins: string[];
     removeItem: (item: string) => void;
+    removeItems: () => void;
     setItem: (item: string) => void;
     checkIfCoinSelected: (item: string) => boolean;
 }
@@ -67,4 +68,5 @@ export interface ButtonStyle {
     className?: string;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
     startIcon?: React.ReactNode;
+    disabled?: boolean;
 }

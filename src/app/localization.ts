@@ -6,5 +6,6 @@ export const localization = {
     goToAllCoinsButton: "All coins",
     selectButton: "Select",
     unselectButton: "Unselect",
+    resetButton: "Reset all",
 
 }

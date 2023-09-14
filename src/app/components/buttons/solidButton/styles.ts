@@ -29,5 +29,10 @@ export const useStyles = makeStyles<Theme, StylesProps>((theme) => ({
             backgroundColor: props => applicationPalettes[props.palette][800],
             boxShadow: "none",
         },
+        "&.Mui-disabled": {
+            backgroundColor: props => applicationPalettes[props.palette][50],
+            border: props => `3px solid ${applicationPalettes[props.palette][2]}`,
+            boxShadow: "none",
+        },
     },
 }));

@@ -10,7 +10,7 @@ export const useStore = (): UseStore => {
     const [allCoinsKeys, setAllCoinsKeys] = useState<string[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const { selectedCoins, removeItem, setItem, checkIfCoinSelected } = useCoinStorage();
+    const { selectedCoins, removeItem, setItem, checkIfCoinSelected, removeItems } = useCoinStorage();
 
     useEffect(() => {
         async function getAllCurrencies() {
@@ -26,5 +26,5 @@ export const useStore = (): UseStore => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return { allCoins, allCoinsKeys, isLoading, selectedCoins, removeItem, setItem, checkIfCoinSelected };
+    return { allCoins, allCoinsKeys, isLoading, selectedCoins, removeItem, setItem, checkIfCoinSelected, removeItems };
 };

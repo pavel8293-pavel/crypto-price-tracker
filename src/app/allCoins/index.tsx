@@ -5,6 +5,8 @@ import { localization } from "../localization";
 import TrackSelectedCoinsButton from "./TrackSelectedCoinsButton";
 import Card from "../components/card";
 import { useAllCoinsStyles } from "./styles";
+import ResetAllButton from "./ResetButton";
+import clsx from "clsx";
 
 const AllCoins = () => {
     const styles = useAllCoinsStyles();
@@ -20,9 +22,18 @@ const AllCoins = () => {
         });
     }, [allCoins, allCoinsKeys]);
 
+    const actions = useMemo(() => {
+        return (
+            <div className={clsx(styles.container, styles.buttons)}>
+                <TrackSelectedCoinsButton />
+                <ResetAllButton />
+            </div>
+        );
+    }, [styles.buttons, styles.container]);
+
     return (
-        <BasicLayout title={localization.allCoinsTitle} actions={<TrackSelectedCoinsButton />}>
-            <div className={styles.cardsContainer}>{content}</div>
+        <BasicLayout title={localization.allCoinsTitle} actions={actions}>
+            <div className={styles.container}>{content}</div>
         </BasicLayout>
     );
 };

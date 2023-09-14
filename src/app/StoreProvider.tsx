@@ -8,6 +8,7 @@ const StoreContext = React.createContext<UseStore>({
     allCoinsKeys: [],
     selectedCoins: [],
     removeItem: () => void 0,
+    removeItems: () => void 0,
     setItem: () => void 0,
     checkIfCoinSelected: () => false,
 });

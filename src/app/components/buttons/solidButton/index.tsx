@@ -8,6 +8,7 @@ export default function SolidButton({
     palette = "primary",
     startIcon,
     onClick,
+    disabled = false
 }: ButtonStyle): JSX.Element {
     const classes = useStyles({ palette });
 
@@ -18,6 +19,7 @@ export default function SolidButton({
             startIcon={startIcon}
             variant="contained"
             focusRipple={false}
+            disabled={disabled}
             classes={{ ...classes }}
             disableElevation
         >
