@@ -6,7 +6,7 @@ const useBasicLayoutStyles = makeStyles<Theme>(theme => ({
         display: "flex",
         flexDirection: "column",
         height: "100vh",
-        padding: theme.spacing(2),
+        padding: theme.spacing(3),
         boxSizing: "border-box",
     },
     title: {
@@ -21,7 +21,11 @@ const useBasicLayoutStyles = makeStyles<Theme>(theme => ({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-    }
+        [theme.breakpoints.down("xs")]: {
+            flexDirection: "column",
+            marginBottom: theme.spacing(2),
+        },
+    },
 }));
 
 export default useBasicLayoutStyles;
@@ -32,10 +36,10 @@ export const usePaperStyles = makeStyles<Theme>(theme => ({
         height: "100%",
         overflow: "overlay",
         "&.MuiPaper-root": {
-            background: applicationPalettes.yellow[50],
+            background: applicationPalettes.yellow[100],
         },
         "&.MuiPaper-rounded": {
-            borderRadius: theme.spacing(1),
+            borderRadius: theme.spacing(2),
         },
     },
 }));

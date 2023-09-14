@@ -1,7 +1,7 @@
 import { useCallback } from "react";
-import SolidButton from "../components/buttons/solidButton";
-import { localization } from "../localization";
-import { useStoreContext } from "../StoreProvider";
+import { useStoreContext } from "../../StoreProvider";
+import { localization } from "../../localization";
+import SolidButton from "../../uiKit/buttons/solidButton";
 
 const ResetAllButton = () => {
     const { removeItems, selectedCoins } = useStoreContext();

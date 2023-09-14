@@ -5,6 +5,9 @@ import { ApplicationColorPalette, Color } from "./interfaces";
 export const CRYPTO_COMPARE_API_URI = "https://min-api.cryptocompare.com/data";
 export const CRYPTO_COMPARE_IMAGES_URI = "https://www.cryptocompare.com";
 
+export const ISO_CURRENCIES = ["USD", "EUR", "GBP"];
+export const GET_COIN_PRICES_INTERVAL_MIL_SEC = 60000;
+
 // styles constants
 
 export const applicationPalettes: {

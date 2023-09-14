@@ -1,8 +1,7 @@
 export const localization = {
     allCoinsTitle: "All coins",
     trackSelectedCoinsButton: (coins: number) => `Track selected coins: ${coins} pcs`,
-
-    trackCoinsTitle: "AllCurrencies",
+    trackCoinsTitle: "Track coins",
     goToAllCoinsButton: "All coins",
     selectButton: "Select",
     unselectButton: "Unselect",

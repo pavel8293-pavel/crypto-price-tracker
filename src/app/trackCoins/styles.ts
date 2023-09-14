@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useAllCoinsStyles = makeStyles(theme => ({
+export const useTrackCoinsStyles = makeStyles(theme => ({
     container: {
         display: "flex",
         flexDirection: "row",
@@ -11,8 +11,5 @@ export const useAllCoinsStyles = makeStyles(theme => ({
         [theme.breakpoints.down("xs")]: {
             justifyContent: "space-around",
         },
-    },
-    buttons: {
-        gap: theme.spacing(2),
     },
 }));

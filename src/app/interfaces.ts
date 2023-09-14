@@ -31,10 +31,18 @@ export interface NormalizedCoinEntity {
     [key: string]: CoinEntity;
 }
 
+export interface CoinPriceModel {
+    [key: string]: {
+        [key: string]: number;
+    };
+}
+
 export interface UseStore extends UseCoinStorage {
     allCoins: UpdatedNormalizedCoinEntity | undefined;
     allCoinsKeys: string[];
     isLoading: boolean;
+    getCoinPrices: () => Promise<void>;
+    coinPrices?: CoinPriceModel;
 }
 
 export interface UseCoinStorage {

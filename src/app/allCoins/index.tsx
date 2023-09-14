@@ -3,10 +3,10 @@ import { useStoreContext } from "../StoreProvider";
 import { BasicLayout } from "../components/basicLayout";
 import { localization } from "../localization";
 import TrackSelectedCoinsButton from "./TrackSelectedCoinsButton";
-import Card from "../components/card";
+import Card from "./card";
 import { useAllCoinsStyles } from "./styles";
-import ResetAllButton from "./ResetButton";
 import clsx from "clsx";
+import ResetAllButton from "../components/resetAllButton";
 
 const AllCoins = () => {
     const styles = useAllCoinsStyles();

@@ -12,9 +12,13 @@ export const useStyles = makeStyles<Theme, StylesProps>((theme) => ({
         height: theme.spacing(6),
         width: "auto",
         minWidth: theme.spacing(20),
-        borderRadius: theme.spacing(),
+        borderRadius: theme.spacing(2),
         border: props => `3px solid ${applicationPalettes[props.palette][200]}`,
         padding: theme.spacing(1.5, 3),
+
+        [theme.breakpoints.down("xs")]: {
+            minWidth: "100%",
+        },
     },
     contained: {
         color: "white",

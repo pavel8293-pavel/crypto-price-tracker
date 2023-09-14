@@ -1,6 +1,9 @@
+import { CoinPriceModel } from "../interfaces";
 import { httpGet } from "./apiHandlers";
 
 export const API_COIN_PRICE = "/pricemulti";
+
+type ApiGetCoinPricesResponse = CoinPriceModel;
 
 export const apiGetCoinPrices = async ({
     coinsToCompare,
@@ -15,9 +18,3 @@ export const apiGetCoinPrices = async ({
     });
     return result.data;
 };
-
-interface ApiGetCoinPricesResponse {
-    [key: string]: {
-        [key: string]: number;
-    };
-}

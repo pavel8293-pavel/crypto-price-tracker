@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useHistory } from "react-router";
-import SolidButton from "../components/buttons/solidButton";
+import SolidButton from "../uiKit/buttons/solidButton";
 import { localization } from "../localization";
 import routeNames from "../routes/routeNames";
 

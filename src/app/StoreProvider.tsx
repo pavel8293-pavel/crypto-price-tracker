@@ -11,6 +11,8 @@ const StoreContext = React.createContext<UseStore>({
     removeItems: () => void 0,
     setItem: () => void 0,
     checkIfCoinSelected: () => false,
+    getCoinPrices: async () => void 0,
+    coinPrices: undefined,
 });
 
 export const StoreProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
