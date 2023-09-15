@@ -5,7 +5,7 @@ const useBasicLayoutStyles = makeStyles<Theme>(theme => ({
     root: {
         display: "flex",
         flexDirection: "column",
-        height: "100vh",
+        height: "100%",
         padding: theme.spacing(3),
         boxSizing: "border-box",
     },
@@ -34,7 +34,7 @@ export const usePaperStyles = makeStyles<Theme>(theme => ({
     root: {
         width: " 100%",
         height: "100%",
-        overflow: "overlay",
+        overflow: "auto",
         "&.MuiPaper-root": {
             background: applicationPalettes.yellow[100],
         },

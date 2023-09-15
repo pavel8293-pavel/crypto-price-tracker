@@ -1,6 +1,6 @@
 import { NormalizedCoinEntity, UpdatedNormalizedCoinEntity } from "./interfaces";
 
-const MAX_COINS_COUNT = 100;
+const MAX_COINS_COUNT = 32;
 
 export const transformCoinData = (
     coins: NormalizedCoinEntity

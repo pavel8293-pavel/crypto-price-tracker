@@ -3,12 +3,12 @@ import { CRYPTO_COMPARE_IMAGES_URI } from "../../constants";
 import { UpdatedCoinEntity } from "../../interfaces";
 import { useCoinInfoStyles } from "./styles";
 
-type CardProps = Omit<UpdatedCoinEntity, "id" | "url" | "coinName" | "description">;
+type CardProps = Omit<UpdatedCoinEntity, "id" | "url" | "coinName" | "description" | "name">;
 
-const CoinInfo = ({ imageUrl, name, fullName }: CardProps) => {
+const CoinInfo = ({ imageUrl, fullName }: CardProps) => {
     const styles = useCoinInfoStyles();
 
-    const imagePath = `${CRYPTO_COMPARE_IMAGES_URI}${imageUrl}`;
+    const imagePath = imageUrl ? `${CRYPTO_COMPARE_IMAGES_URI}${imageUrl}`: "";
 
     return (
         <>

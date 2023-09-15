@@ -13,7 +13,7 @@ export const BasicLayout = ({ title, children, actions }: BasicLayoutProps) => {
     return (
         <div className={styles.root}>
             <div className={styles.titleContainer}>
-                <Typography variant="h2" className={styles.title}>
+                <Typography variant="h3" className={styles.title}>
                     {title}
                 </Typography>
                 {actions}

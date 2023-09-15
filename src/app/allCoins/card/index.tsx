@@ -24,7 +24,7 @@ const CoinCard = ({ name, ...props }: CardProps) => {
 
     return (
         <Card>
-            <CoinInfo {...props} name={name} />
+            <CoinInfo {...props} />
             <SolidButton label={label} palette={palette} onClick={onClick} />
         </Card>
     );
