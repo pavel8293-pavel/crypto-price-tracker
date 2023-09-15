@@ -8,7 +8,7 @@ const TrackSelectedCoinsButton = () => {
     const { push } = useHistory();
     const { selectedCoins } = useStoreContext();
 
-    const onClick = () => push(routeNames.TRACK_CURRENCIES);
+    const onClick = () => push(routeNames.TRACK_COINS);
 
     return (
         <SolidButton

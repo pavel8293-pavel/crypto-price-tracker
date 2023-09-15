@@ -18,7 +18,7 @@ const ApplicationRouter: FunctionComponent<ApplicationRouterProps> = ({ history 
                     <Route key={route.name} {...route} />
                 ))}
                 <Route exact path="/">
-                    <Redirect to={routeNames.ALL_CURRENCIES} />
+                    <Redirect to={routeNames.ALL_COINS} />
                 </Route>
                 <Route path="/">
                     <Redirect to={routeNames.ERROR_NOT_FOUND} />

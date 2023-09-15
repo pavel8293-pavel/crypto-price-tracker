@@ -7,14 +7,14 @@ const TrackCurrencies = lazy(() => import("../trackCoins"));
 
 const routes: RouteValue[] = [
     {
-        name: routeNames.ALL_CURRENCIES,
-        path: routeNames.ALL_CURRENCIES,
+        name: routeNames.ALL_COINS,
+        path: routeNames.ALL_COINS,
         exact: true,
         component: AllCurrencies,
     },
     {
-        name: routeNames.TRACK_CURRENCIES,
-        path: routeNames.TRACK_CURRENCIES,
+        name: routeNames.TRACK_COINS,
+        path: routeNames.TRACK_COINS,
         component: TrackCurrencies,
     },
 ];
