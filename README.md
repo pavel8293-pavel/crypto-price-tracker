@@ -40,10 +40,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 # Screenshots
 
-See [Image1](https://i.ibb.co/MPHfdGW/Screenshot-2023-09-15-at-12-11-20.png)
-See [Image2](https://i.ibb.co/y40Y6BG/Screenshot-2023-09-15-at-12-11-02.png)
-See [Image3](https://i.ibb.co/k5xpwBP/Screenshot-2023-09-15-at-12-10-37.png)
-See [Image4](https://i.ibb.co/2hRf07b/Screenshot-2023-09-15-at-12-07-57.png)
+- See [Image1](https://i.ibb.co/MPHfdGW/Screenshot-2023-09-15-at-12-11-20.png)
+- See [Image2](https://i.ibb.co/y40Y6BG/Screenshot-2023-09-15-at-12-11-02.png)
+- See [Image3](https://i.ibb.co/k5xpwBP/Screenshot-2023-09-15-at-12-10-37.png)
+- See [Image4](https://i.ibb.co/2hRf07b/Screenshot-2023-09-15-at-12-07-57.png)
 
 # Features
 
