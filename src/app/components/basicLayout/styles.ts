@@ -30,7 +30,7 @@ const useBasicLayoutStyles = makeStyles<Theme>(theme => ({
 
 export default useBasicLayoutStyles;
 
-export const usePaperStyles = makeStyles<Theme>(theme => ({
+export const usePaperClasses = makeStyles<Theme>(theme => ({
     root: {
         width: " 100%",
         height: "100%",

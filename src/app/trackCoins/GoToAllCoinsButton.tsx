@@ -6,7 +6,7 @@ import routeNames from "../routes/routeNames";
 
 const GoToAllCoinsButton = () => {
     const { push } = useHistory();
-    const onClick = useCallback(() => push(routeNames.ALL_CURRENCIES), [push]);
+    const onClick = useCallback(() => push(routeNames.ALL_COINS), [push]);
 
     return <SolidButton label={localization.goToAllCoinsButton} onClick={onClick} palette="yellow" />;
 };

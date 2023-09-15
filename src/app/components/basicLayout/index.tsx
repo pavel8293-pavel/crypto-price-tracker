@@ -1,4 +1,4 @@
-import useBasicLayoutStyles, { usePaperStyles } from "./styles";
+import useBasicLayoutStyles, { usePaperClasses } from "./styles";
 import { Paper, Typography } from "@material-ui/core";
 
 interface BasicLayoutProps {
@@ -9,7 +9,7 @@ interface BasicLayoutProps {
 
 export const BasicLayout = ({ title, children, actions }: BasicLayoutProps) => {
     const styles = useBasicLayoutStyles();
-    const paperStyles = usePaperStyles();
+    const paperClasses = usePaperClasses();
     return (
         <div className={styles.root}>
             <div className={styles.titleContainer}>
@@ -18,7 +18,7 @@ export const BasicLayout = ({ title, children, actions }: BasicLayoutProps) => {
                 </Typography>
                 {actions}
             </div>
-            <Paper classes={paperStyles}>{children}</Paper>
+            <Paper classes={paperClasses}>{children}</Paper>
         </div>
     );
 };

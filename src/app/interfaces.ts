@@ -1,5 +1,3 @@
-import { Color as MuiColor } from "@material-ui/core";
-
 // API interfaces
 export interface CoinEntity {
     Id: string;
@@ -21,8 +19,6 @@ export interface UpdatedCoinEntity {
     description: string;
 }
 
-// style interfaces
-
 export interface UpdatedNormalizedCoinEntity {
     [key: keyof NormalizedCoinEntity]: UpdatedCoinEntity;
 }
@@ -40,8 +36,8 @@ export interface CoinPriceModel {
 export interface UseStore extends UseCoinStorage {
     allCoins: UpdatedNormalizedCoinEntity | undefined;
     allCoinsKeys: string[];
-    isLoading: boolean;
     getCoinPrices: () => Promise<void>;
+    getAllCoins: () => Promise<void>;
     coinPrices?: CoinPriceModel;
 }
 
@@ -53,12 +49,20 @@ export interface UseCoinStorage {
     checkIfCoinSelected: (item: string) => boolean;
 }
 
+
+// style interfaces
+
 export type ApplicationColorPalette = "primary" | "green" | "yellow";
 
-export interface Color extends Omit<MuiColor, "A100" | "A200" | "A400" | "A700"> {
+export interface Color {
     1: string;
-    2: string;
-    6: string;
+    50: string;
+    100: string;
+    200: string;
+    500: string;
+    600: string;
+    700: string;
+    800: string;
 }
 
 export type ButtonSize = "l" | "m" | "s";

@@ -1,7 +1,7 @@
 import { UpdatedCoinEntity } from "../../interfaces";
 import SolidButton from "../../uiKit/buttons/solidButton";
 import { localization } from "../../localization";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import { useStoreContext } from "../../StoreProvider";
 import CoinInfo from "../../components/coinInfo";
 import { Card } from "../../components/card";
@@ -30,4 +30,4 @@ const CoinCard = ({ name, ...props }: CardProps) => {
     );
 };
 
-export default CoinCard;
+export default memo(CoinCard);
