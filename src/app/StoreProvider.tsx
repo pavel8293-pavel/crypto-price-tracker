@@ -1,10 +1,18 @@
-import React, {  } from "react";
+import React from "react";
 import { UseStore } from "./interfaces";
-import { useStore } from "./useStore";
+import { useStore } from "./hooks/useStore";
 
 const StoreContext = React.createContext<UseStore>({
     isLoading: false,
-    allCurrencies: undefined,
+    allCoins: undefined,
+    allCoinsKeys: [],
+    selectedCoins: [],
+    removeItem: () => void 0,
+    removeItems: () => void 0,
+    setItem: () => void 0,
+    checkIfCoinSelected: () => false,
+    getCoinPrices: async () => void 0,
+    coinPrices: undefined,
 });
 
 export const StoreProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
