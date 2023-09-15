@@ -24,7 +24,7 @@ Follow these steps to get started with the project:
 1.  Create a project folder on your computer.
 2.  Go to this folder.
 3.  Clone the project from the repository:
-    -   Run the following command in your terminal `git clone https://github.com/**{your-username}**/crypto-price-tracker.git`
+    -   Run the following command in your terminal `git clone https://github.com/pavel8293-pavel/crypto-price-tracker.git`
     -   Alternatively, you can download the ZIP file from the repository and extract it into a project folder on your computer.
 4.  Open the project folder in your integrated development environment (IDE):
 5.  - After cloning the project through the terminal run the command `cd crypto-price-tracker`.
