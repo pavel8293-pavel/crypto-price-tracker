@@ -21,14 +21,17 @@
 # First start
 
 Follow these steps to get started with the project:
-
-1.  Clone the project from the repository:
+1.  Create a project folder on your computer.
+2.  Go to this folder.
+3.  Clone the project from the repository:
     -   Run the following command in your terminal `git clone https://github.com/**{your-username}**/crypto-price-tracker.git`
-    -   Alternatively, you can download the ZIP file from the repository and extract it into a folder on your computer.
-2.  Open the project folder in your integrated development environment (IDE). Ensure that the terminal path matches the project path.
-3.  Install project dependencies by running the following command in your terminal: `npm install`
-4.  Start the project by running the following command in your terminal: `npm run start`
-5.  Once the project is running, open your web browser and visit [http://localhost:3000](http://localhost:3000/) to view it in the browser.
+    -   Alternatively, you can download the ZIP file from the repository and extract it into a project folder on your computer.
+4.  Open the project folder in your integrated development environment (IDE):
+5.  - After cloning the project through the terminal run the command `cd crypto-price-tracker`.
+    - Alternatively, you can open the project folder.
+6.  Install project dependencies by running the following command in your terminal: `npm install`
+7.  Start the project by running the following command in your terminal: `npm run start`
+8.  Once the project is running, open your web browser and visit [http://localhost:3000](http://localhost:3000/) to view it in the browser.
 
 
 Now you're ready to explore and use the Crypto Price Tracker web application.
