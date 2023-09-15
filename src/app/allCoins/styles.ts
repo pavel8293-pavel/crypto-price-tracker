@@ -6,7 +6,7 @@ export const useAllCoinsStyles = makeStyles(theme => ({
         flexDirection: "row",
         flexWrap: "wrap",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
 
         [theme.breakpoints.down("xs")]: {
             justifyContent: "space-around",
@@ -14,5 +14,6 @@ export const useAllCoinsStyles = makeStyles(theme => ({
     },
     buttons: {
         gap: theme.spacing(2),
+        marginBottom: theme.spacing(1),
     },
 }));

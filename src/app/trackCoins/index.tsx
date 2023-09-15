@@ -7,6 +7,8 @@ import CardWithCurrencies from "./cardWithCurrencies";
 import { useTrackCoinsStyles } from "./styles";
 import { GET_COIN_PRICES_INTERVAL_MIL_SEC } from "../constants";
 import { FullscreenLoader } from "../components/fullscreenLoader";
+import Chart from "./chart";
+import { clsx } from "clsx";
 
 const TrackCoins = () => {
     const styles = useTrackCoinsStyles();
@@ -17,19 +19,24 @@ const TrackCoins = () => {
             return null;
         }
 
-        return selectedCoins?.map(coin => {
-            const { imageUrl, name, fullName, id } = allCoins[coin];
-            return (
-                <CardWithCurrencies
-                    currencies={coinPrices?.[coin]}
-                    imageUrl={imageUrl}
-                    name={name}
-                    fullName={fullName}
-                    key={id}
-                />
-            );
-        });
+        return selectedCoins?.map((coin, index) => (
+            <CardWithCurrencies
+                currencies={coinPrices?.[coin]}
+                imageUrl={allCoins[coin]?.imageUrl}
+                name={allCoins[coin]?.name}
+                fullName={allCoins[coin]?.fullName}
+                key={`${allCoins[coin]?.fullName}${index}`}
+            />
+        ));
     }, [allCoins, coinPrices, selectedCoins]);
+
+    const actions = useMemo(() => {
+        return (
+            <div className={clsx(styles.container, styles.buttons)}>
+                <GoToAllCoinsButton />
+            </div>
+        );
+    }, [styles.buttons, styles.container]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -50,8 +57,13 @@ const TrackCoins = () => {
     }
 
     return (
-        <BasicLayout title={localization.trackCoinsTitle} actions={<GoToAllCoinsButton />}>
+        <BasicLayout title={localization.trackCoinsTitle} actions={actions}>
             <div className={styles.container}>{content}</div>
+            {coinPrices && (
+                <div>
+                    <Chart coinNames={selectedCoins} coinPrices={coinPrices} />
+                </div>
+            )}
         </BasicLayout>
     );
 };

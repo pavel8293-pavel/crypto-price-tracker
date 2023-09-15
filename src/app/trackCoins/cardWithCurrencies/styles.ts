@@ -4,6 +4,7 @@ export const useCardWithCurrenciesStyles = makeStyles(theme => ({
     currencyContainer: {
         display: "flex",
         flexDirection: "column",
+        height: theme.spacing(9),
     },
     divider: {
         width: "100%",

@@ -6,10 +6,13 @@ export const useTrackCoinsStyles = makeStyles(theme => ({
         flexDirection: "row",
         flexWrap: "wrap",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
 
         [theme.breakpoints.down("xs")]: {
             justifyContent: "space-around",
         },
+    },
+    buttons: {
+        marginBottom: theme.spacing(1),
     },
 }));
