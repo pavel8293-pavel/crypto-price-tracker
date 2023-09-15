@@ -1,17 +1,29 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useStoreContext } from "../StoreProvider";
 import { BasicLayout } from "../components/basicLayout";
 import { localization } from "../localization";
 import TrackSelectedCoinsButton from "./TrackSelectedCoinsButton";
-import Card from "./card";
+import CoinCard from "./card";
 import { useAllCoinsStyles } from "./styles";
 import clsx from "clsx";
 import ResetAllButton from "../components/resetAllButton";
 import { FullscreenLoader } from "../components/fullscreenLoader";
 
 const AllCoins = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const styles = useAllCoinsStyles();
-    const { allCoins, allCoinsKeys, isLoading } = useStoreContext();
+    const { allCoins, allCoinsKeys, getAllCoins } = useStoreContext();
+
+    useEffect(() => {
+        async function fetchAllCoins() {
+            setIsLoading(true);
+            await getAllCoins();
+            setIsLoading(false);
+        }
+
+        fetchAllCoins();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const content = useMemo(() => {
         if (!allCoins) {
@@ -19,7 +31,7 @@ const AllCoins = () => {
         }
 
         return allCoinsKeys?.map(coinKey => {
-            return <Card {...allCoins[coinKey]} key={allCoins[coinKey].id} />;
+            return <CoinCard {...allCoins[coinKey]} key={allCoins[coinKey].id} />;
         });
     }, [allCoins, allCoinsKeys]);
 

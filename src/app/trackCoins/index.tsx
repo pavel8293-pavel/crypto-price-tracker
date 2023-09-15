@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useStoreContext } from "../StoreProvider";
 import { BasicLayout } from "../components/basicLayout";
 import { localization } from "../localization";
@@ -9,25 +9,22 @@ import { GET_COIN_PRICES_INTERVAL_MIL_SEC } from "../constants";
 import { FullscreenLoader } from "../components/fullscreenLoader";
 import Chart from "./chart";
 import { clsx } from "clsx";
+import { Typography } from "@material-ui/core";
 
 const TrackCoins = () => {
     const styles = useTrackCoinsStyles();
-    const { selectedCoins, getCoinPrices, coinPrices, allCoins, isLoading } = useStoreContext();
+    const [isLoading, setIsLoading] = useState(false);
+    const { selectedCoins, getCoinPrices, coinPrices, allCoins, getAllCoins } = useStoreContext();
 
     const content = useMemo(() => {
-        if (!allCoins) {
+        if (!allCoins || !coinPrices) {
             return null;
         }
 
-        return selectedCoins?.map((coin, index) => (
-            <CardWithCurrencies
-                currencies={coinPrices?.[coin]}
-                imageUrl={allCoins[coin]?.imageUrl}
-                name={allCoins[coin]?.name}
-                fullName={allCoins[coin]?.fullName}
-                key={`${allCoins[coin]?.fullName}${index}`}
-            />
-        ));
+        return selectedCoins?.map(coin => {
+            const { id } = allCoins?.[coin];
+            return <CardWithCurrencies currencies={coinPrices?.[coin]} key={id} {...allCoins?.[coin]} />;
+        });
     }, [allCoins, coinPrices, selectedCoins]);
 
     const actions = useMemo(() => {
@@ -40,7 +37,15 @@ const TrackCoins = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await getCoinPrices();
+            setIsLoading(true);
+            const requests = [getCoinPrices()];
+
+            if (!allCoins) {
+                requests.push(getAllCoins());
+            }
+
+            await Promise.all(requests);
+            setIsLoading(false);
         };
 
         fetchData();
@@ -60,7 +65,8 @@ const TrackCoins = () => {
         <BasicLayout title={localization.trackCoinsTitle} actions={actions}>
             <div className={styles.container}>{content}</div>
             {coinPrices && (
-                <div>
+                <div className={styles.chart}>
+                    <Typography variant="h5">{localization.chartTitle}</Typography>
                     <Chart coinNames={selectedCoins} coinPrices={coinPrices} />
                 </div>
             )}

@@ -6,5 +6,6 @@ export const localization = {
     selectButton: "Select",
     unselectButton: "Unselect",
     resetButton: "Reset all",
+    chartTitle: "Chart",
 
 }

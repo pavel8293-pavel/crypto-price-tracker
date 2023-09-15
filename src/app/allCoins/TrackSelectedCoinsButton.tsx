@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { useHistory } from "react-router";
 import SolidButton from "../uiKit/buttons/solidButton";
 import { localization } from "../localization";
@@ -8,7 +7,8 @@ import { useStoreContext } from "../StoreProvider";
 const TrackSelectedCoinsButton = () => {
     const { push } = useHistory();
     const { selectedCoins } = useStoreContext();
-    const onClick = useCallback(() => push(routeNames.TRACK_CURRENCIES), [push]);
+
+    const onClick = () => push(routeNames.TRACK_CURRENCIES);
 
     return (
         <SolidButton

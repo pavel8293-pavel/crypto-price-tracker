@@ -1,7 +1,7 @@
 import { Divider, Typography } from "@material-ui/core";
 import { UpdatedCoinEntity } from "../../interfaces";
 import { useCardWithCurrenciesStyles } from "./styles";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import CoinInfo from "../../components/coinInfo";
 import { Card } from "../../components/card";
 
@@ -31,4 +31,4 @@ const CardWithCurrencies = ({ currencies, ...props }: CardProps) => {
     );
 };
 
-export default CardWithCurrencies;
+export default memo(CardWithCurrencies);

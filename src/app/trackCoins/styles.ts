@@ -15,4 +15,13 @@ export const useTrackCoinsStyles = makeStyles(theme => ({
     buttons: {
         marginBottom: theme.spacing(1),
     },
+    chart: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: theme.spacing(2),
+        margin: theme.spacing(4),
+        maxHeight: "50vh",
+    },
 }));
