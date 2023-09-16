@@ -7,6 +7,8 @@ export const useAllItemsStyles = makeStyles(theme => ({
         flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "flex-start",
+        gap: theme.spacing(2),
+        margin: theme.spacing(2),
 
         [theme.breakpoints.down("xs")]: {
             justifyContent: "space-around",

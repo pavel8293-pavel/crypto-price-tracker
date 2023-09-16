@@ -30,10 +30,14 @@ const AllItems = () => {
             return null;
         }
 
-        return allItems.map(coin => {
-            return <ItemCard {...coin} key={coin.id} />;
-        });
-    }, [allItems]);
+        return (
+            <div className={styles.container}>
+                {allItems.map(coin => {
+                    return <ItemCard {...coin} key={coin.id} />;
+                })}
+            </div>
+        );
+    }, [allItems, styles.container]);
 
     const actions = useMemo(() => {
         return (
@@ -50,7 +54,7 @@ const AllItems = () => {
 
     return (
         <BasicLayout title={localization.allItemsTitle} actions={actions}>
-            <div className={styles.container}>{content}</div>
+            {content}
         </BasicLayout>
     );
 };

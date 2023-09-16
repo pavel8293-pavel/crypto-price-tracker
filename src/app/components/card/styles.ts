@@ -6,7 +6,6 @@ export const useCardStyles = makeStyles(theme => ({
         flexDirection: "column",
         alignItems: "center",
         width: "200px",
-        margin: theme.spacing(1.5, 2),
         padding: theme.spacing(1.5),
         boxSizing: "border-box",
         boxShadow: "none",
