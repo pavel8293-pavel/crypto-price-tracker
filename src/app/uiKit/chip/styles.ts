@@ -14,6 +14,9 @@ export const useChipStyles = makeStyles<Theme, ChipStylesProps>(theme => ({
         borderRadius: "4px",
         padding: theme.spacing(0, 1),
         height: "32px",
+        "&:hover": {
+            cursor: "pointer",
+        }
     },
     label: {
         padding: 0,

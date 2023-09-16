@@ -1,6 +1,6 @@
 import { Theme, makeStyles } from "@material-ui/core";
-import { TxtColor, applicationPalettes } from "../../constants";
-import { ApplicationColorPalette, ButtonSize } from "../../interfaces";
+import { TxtColor, applicationPalettes } from "../../../constants";
+import { ApplicationColorPalette, ButtonSize } from "../../../interfaces";
 
 export interface StylesProps {
     palette: ApplicationColorPalette;

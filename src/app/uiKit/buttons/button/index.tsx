@@ -1,6 +1,6 @@
 import { Button as MaterialButton, Typography } from "@material-ui/core";
 import { useStyles } from "./styles";
-import { ButtonStyle } from "../../interfaces";
+import { ButtonStyle } from "../../../interfaces";
 
 export default function Button({
     id,
@@ -15,10 +15,15 @@ export default function Button({
 }: ButtonStyle): JSX.Element {
     const classes = useStyles({ palette, variant, size });
 
+    const onHandleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        onClick?.();
+    };
+
     return (
         <MaterialButton
             id={id}
-            onClick={onClick}
+            onClick={onHandleClick}
             startIcon={startIcon}
             endIcon={endIcon}
             variant={variant}
