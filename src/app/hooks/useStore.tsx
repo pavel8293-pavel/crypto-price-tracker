@@ -1,41 +1,49 @@
 import { useState } from "react";
-import { apiGetAllCoins } from "../api/apiGetAllCoins";
-import { UseStore, UpdatedNormalizedCoinEntity, CoinPriceModel } from "../interfaces";
-import { transformCoinData } from "../helpers";
-import { useCoinStorage } from "./useCoinStorage";
+import { apiGetAllItems } from "../api/apiGetAllItems";
+import { UseStore, CoinPriceModel, CoinEntity } from "../interfaces";
+import { useStorage } from "./useStorage";
 import { apiGetCoinPrices } from "../api/apiGetCoinPrices";
 import { ISO_CURRENCIES } from "../constants";
+import { transformItems } from "../helpers";
 
 export const useStore = (): UseStore => {
-    const [allCoins, setAllCoins] = useState<UpdatedNormalizedCoinEntity | undefined>(undefined);
-    const [allCoinsKeys, setAllCoinsKeys] = useState<string[]>([]);
+    const [allItems, setAllItems] = useState<CoinEntity[]>([]);
+    const [itemPrices, setItemPrices] = useState<CoinPriceModel | undefined>(undefined);
 
-    const [coinPrices, setCoinPrices] = useState<CoinPriceModel | undefined>(undefined);
-
-    const { selectedCoins, removeItem, setItem, checkIfCoinSelected, removeItems } = useCoinStorage();
+    const { selectedItems, removeItem, setItem, checkIfItemSelected, removeItems } = useStorage();
 
     async function getCoinPrices() {
-        const prices = await apiGetCoinPrices({ coinsToCompare: selectedCoins, priceCurrencies: ISO_CURRENCIES });
-        setCoinPrices(prices);
+        const prices = await apiGetCoinPrices({ itemsToCompare: selectedItems, priceCurrencies: ISO_CURRENCIES });
+        setItemPrices(prices);
     }
 
-    async function getAllCoins() {
-        const coins = await apiGetAllCoins();
-        const { transformedCoins, coinsKeys } = transformCoinData(coins.Data);
-        setAllCoins(transformedCoins);
-        setAllCoinsKeys(coinsKeys);
+    async function getAllItems() {
+        const items = await apiGetAllItems();
+        const transformedItems = transformItems(items);
+        setAllItems(transformedItems);
+        // setAllItems([
+        //     {
+        //         currentPrice: 100.0554343,
+        //         highestPrice: 110.12234546,
+        //         lowestPrice: 90.123467,
+        //         priceChangePercentage: 100.0554343 / 110.12234546,
+        //         id: "1",
+        //         symbol: "BTC",
+        //         name: "Bitcoin",
+        //         image: "",
+        //     },
+        // ]);
     }
 
     return {
-        allCoins,
-        allCoinsKeys,
-        getAllCoins,
-        selectedCoins,
+        allItems,
+        getAllItems,
+        selectedItems,
         removeItem,
         setItem,
-        checkIfCoinSelected,
+        checkIfItemSelected,
         removeItems,
         getCoinPrices,
-        coinPrices,
+        itemPrices,
     };
 };

@@ -1,29 +1,33 @@
-import { Button, Typography } from "@material-ui/core";
+import { Button as MaterialButton, Typography } from "@material-ui/core";
 import { useStyles } from "./styles";
-import { ButtonStyle } from "../../../interfaces";
+import { ButtonStyle } from "../../interfaces";
 
-export default function SolidButton({
+export default function Button({
     id,
     label,
     palette = "primary",
     startIcon,
+    endIcon,
+    variant = "contained",
     onClick,
-    disabled = false
+    size = "m",
+    disabled = false,
 }: ButtonStyle): JSX.Element {
-    const classes = useStyles({ palette });
+    const classes = useStyles({ palette, variant, size });
 
     return (
-        <Button
+        <MaterialButton
             id={id}
             onClick={onClick}
             startIcon={startIcon}
-            variant="contained"
+            endIcon={endIcon}
+            variant={variant}
             focusRipple={false}
             disabled={disabled}
             classes={{ ...classes }}
             disableElevation
         >
             <Typography>{label}</Typography>
-        </Button>
+        </MaterialButton>
     );
 }

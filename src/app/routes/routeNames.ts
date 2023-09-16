@@ -1,6 +1,6 @@
 const routeNames = {
-    ALL_COINS: "/all",
-    TRACK_COINS: "/track",
+    ALL_ITEMS: "/all-items",
+    TRACK_ITEMS: "/track-items",
     ERROR_NOT_FOUND: "/not-found",
 
 };

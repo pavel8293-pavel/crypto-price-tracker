@@ -1,30 +1,13 @@
 // API interfaces
 export interface CoinEntity {
-    Id: string;
-    Url: string;
-    ImageUrl: string;
-    Name: string;
-    CoinName: string;
-    FullName: string;
-    Description: string;
-}
-
-export interface UpdatedCoinEntity {
     id: string;
-    url: string;
-    imageUrl: string;
+    symbol: string;
     name: string;
-    coinName: string;
-    fullName: string;
-    description: string;
-}
-
-export interface UpdatedNormalizedCoinEntity {
-    [key: keyof NormalizedCoinEntity]: UpdatedCoinEntity;
-}
-
-export interface NormalizedCoinEntity {
-    [key: string]: CoinEntity;
+    image: string;
+    currentPrice: number;
+    highestPrice: number;
+    lowestPrice: number;
+    priceChangePercentage: number;
 }
 
 export interface CoinPriceModel {
@@ -33,26 +16,25 @@ export interface CoinPriceModel {
     };
 }
 
-export interface UseStore extends UseCoinStorage {
-    allCoins: UpdatedNormalizedCoinEntity | undefined;
-    allCoinsKeys: string[];
+export interface UseStore extends UseStorage {
+    allItems: CoinEntity[];
     getCoinPrices: () => Promise<void>;
-    getAllCoins: () => Promise<void>;
-    coinPrices?: CoinPriceModel;
+    getAllItems: () => Promise<void>;
+    itemPrices?: CoinPriceModel;
 }
 
-export interface UseCoinStorage {
-    selectedCoins: string[];
+export interface UseStorage {
+    selectedItems: string[];
     removeItem: (item: string) => void;
     removeItems: () => void;
     setItem: (item: string) => void;
-    checkIfCoinSelected: (item: string) => boolean;
+    checkIfItemSelected: (item: string) => boolean;
 }
 
 
 // style interfaces
 
-export type ApplicationColorPalette = "primary" | "green" | "yellow";
+export type ApplicationColorPalette = "primary" | "green" | "yellow" | "red";
 
 export interface Color {
     1: string;
@@ -80,5 +62,16 @@ export interface ButtonStyle {
     className?: string;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
     startIcon?: React.ReactNode;
+    endIcon?: React.ReactNode;
     disabled?: boolean;
+    variant?: "contained" | "outlined";
+}
+
+export interface ChipProps {
+    text?: React.ReactNode;
+    size?: "small" | "medium";
+    palette?: ApplicationColorPalette;
+    className?: string;
+    textColorVariant?: keyof Color;
+    backgroundVariant?: keyof Color;
 }

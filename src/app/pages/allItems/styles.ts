@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useAllCoinsStyles = makeStyles(theme => ({
+export const useAllItemsStyles = makeStyles(theme => ({
     container: {
         display: "flex",
         flexDirection: "row",

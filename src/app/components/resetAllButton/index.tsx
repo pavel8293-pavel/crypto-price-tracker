@@ -1,9 +1,9 @@
 import { useStoreContext } from "../../StoreProvider";
 import { localization } from "../../localization";
-import SolidButton from "../../uiKit/buttons/solidButton";
+import SolidButton from "../../uiKit/button";
 
 const ResetAllButton = () => {
-    const { removeItems, selectedCoins } = useStoreContext();
+    const { removeItems, selectedItems } = useStoreContext();
     const onClick = () => removeItems();
 
     return (
@@ -11,7 +11,7 @@ const ResetAllButton = () => {
             label={localization.resetButton}
             onClick={onClick}
             palette="primary"
-            disabled={!selectedCoins.length}
+            disabled={!selectedItems.length}
         />
     );
 };
