@@ -22,5 +22,4 @@ export const apiGetAllItems = async (): Promise<ApiGetAllItemsResponse[]> => {
         page: 1,
     });
     return result.data;
-
 };

@@ -5,9 +5,11 @@ import { ApplicationColorPalette, Color } from "./interfaces";
 export const CRYPTO_COINS_PUBLIC_API_URI = "https://api.coingecko.com/api/v3/";
 
 export const ISO_CURRENCIES = ["USD", "EUR", "GBP"];
-export const DEFAULT_CURRENCY = "USD";
+export const DEFAULT_CURRENCY = "usd";
 export const EN_LANG = "en-GB";
 export const GET_COIN_PRICES_INTERVAL_MIL_SEC = 60000;
+export const DEFAULT_HISTORY_DAYS = 10;
+export const DATE_FORMAT = "dd/MM/yyyy";
 
 // styles constants
 

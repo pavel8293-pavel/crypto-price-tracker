@@ -11,6 +11,7 @@ const StoreContext = React.createContext<UseStore>({
     checkIfItemSelected: () => false,
     getCoinPrices: async () => void 0,
     getAllItems: async () => void 0,
+    getItemHistory: async () => ({}),
     itemPrices: undefined,
 });
 

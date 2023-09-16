@@ -6,6 +6,13 @@ export const localization = {
     selectButton: "Select",
     unselectButton: "Unselect",
     resetButton: "Reset all",
-    chartTitle: "Chart",
+    chartTitle: "History chart",
+    chartLabel: "History",
+
+    // dialog
+    changePercentageLabel: "Last 24h price change",
+    lowestPriceLabel: "Last 24h lowest price",
+    highestPriceLabel: "Last 24h highest price",
+    currentPriceLabel: "Current price",
 
 }

@@ -1,5 +1,7 @@
+import { TypographyVariant } from "@material-ui/core";
+
 // API interfaces
-export interface CoinEntity {
+export interface ItemEntity {
     id: string;
     symbol: string;
     name: string;
@@ -7,7 +9,11 @@ export interface CoinEntity {
     currentPrice: number;
     highestPrice: number;
     lowestPrice: number;
-    priceChangePercentage: number;
+    priceChangePercentage24h: number;
+}
+
+export interface ItemHistory {
+    [key: string]: number;
 }
 
 export interface CoinPriceModel {
@@ -17,9 +23,10 @@ export interface CoinPriceModel {
 }
 
 export interface UseStore extends UseStorage {
-    allItems: CoinEntity[];
+    allItems: ItemEntity[];
     getCoinPrices: () => Promise<void>;
     getAllItems: () => Promise<void>;
+    getItemHistory: (id: string, days?: number) => Promise<ItemHistory>;
     itemPrices?: CoinPriceModel;
 }
 
@@ -30,7 +37,6 @@ export interface UseStorage {
     setItem: (item: string) => void;
     checkIfItemSelected: (item: string) => boolean;
 }
-
 
 // style interfaces
 
@@ -56,11 +62,11 @@ export interface StylesProps {
 
 export interface ButtonStyle {
     id?: string;
-    label: React.ReactText;
+    label?: React.ReactText;
     palette?: ApplicationColorPalette;
     size?: ButtonSize;
     className?: string;
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+    onClick?: () => void | Promise<void>;
     startIcon?: React.ReactNode;
     endIcon?: React.ReactNode;
     disabled?: boolean;
@@ -74,4 +80,14 @@ export interface ChipProps {
     className?: string;
     textColorVariant?: keyof Color;
     backgroundVariant?: keyof Color;
+}
+
+export interface LabelValuePairProps {
+    value: React.ReactNode;
+    label: React.ReactText;
+    labelClassName?: string;
+    typographyLabelVariant?: Exclude<TypographyVariant, "button">;
+    typographyValueVariant?: Exclude<TypographyVariant, "button">;
+    tooltip?: string;
+    disabled?: boolean;
 }
