@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import { TxtColor } from "../../../../../constants";
 
-export const useItemContentStyles = makeStyles(theme => ({
+export const useCardContentStyles = makeStyles(theme => ({
     root: {
         display: "flex",
         justifyContent: "space-between",

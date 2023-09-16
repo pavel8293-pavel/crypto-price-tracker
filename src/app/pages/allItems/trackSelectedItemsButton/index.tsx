@@ -1,5 +1,5 @@
 import { useHistory } from "react-router";
-import Button from "../../../uiKit/button";
+import Button from "../../../uiKit/buttons/button";
 import { localization } from "../../../localization";
 import routeNames from "../../../routes/routeNames";
 import { useStoreContext } from "../../../StoreProvider";

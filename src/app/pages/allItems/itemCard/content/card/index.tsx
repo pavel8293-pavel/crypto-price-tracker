@@ -7,10 +7,10 @@ import { Typography, Avatar } from "@material-ui/core";
 import { formatCurrency, formatPercentNumber } from "../../../../../helpers";
 import Chip from "../../../../../uiKit/chip";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
-import { useItemContentStyles } from "./styles";
+import { useCardContentStyles } from "./styles";
 
-const ItemContent = ({ image, currentPrice, priceChangePercentage24h, symbol }: ItemEntity) => {
-    const styles = useItemContentStyles();
+const CardContent = ({ image, currentPrice, priceChangePercentage24h, symbol }: ItemEntity) => {
+    const styles = useCardContentStyles();
     const { checkIfItemSelected, removeItem, setItem } = useStoreContext();
 
     const isPositiveChange = priceChangePercentage24h >= 0;
@@ -52,4 +52,4 @@ const ItemContent = ({ image, currentPrice, priceChangePercentage24h, symbol }: 
     );
 };
 
-export default memo(ItemContent);
+export default memo(CardContent);
