@@ -17,7 +17,7 @@ export interface ApiGetAllItemsResponse {
 export const apiGetAllItems = async (): Promise<ApiGetAllItemsResponse[]> => {
     const result = await httpGet<ApiGetAllItemsResponse[]>(API_GET_ALL_COINS, {
         vs_currency: DEFAULT_CURRENCY,
-        per_page: 50,
+        per_page: 48,
         order: "market_cap_desc",
         page: 1,
     });
