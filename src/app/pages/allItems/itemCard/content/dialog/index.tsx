@@ -16,7 +16,9 @@ const DialogContent = (item: ItemEntity) => {
         async function fetchItemsHistory() {
             setIsLoading(true);
             const history = await getItemHistory(item.id);
-            setItemHistory(history);
+            if (history) {
+                setItemHistory(history);
+            }
             setIsLoading(false);
         }
 

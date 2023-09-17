@@ -7,32 +7,20 @@ import { clsx } from "clsx";
 import Cards from "./cardsContent";
 import { useStoreContext } from "../../StoreProvider";
 import { FullscreenLoader } from "../../components/fullscreenLoader";
-import { ItemHistoryModel } from "../../interfaces";
 
 const TrackItems = () => {
     const styles = useTrackCoinsStyles();
 
-    const [itemHistories, setItemHistories] = useState<ItemHistoryModel | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(false);
 
-    const { allItems, getAllItems, getItemHistory, selectedItems } = useStoreContext();
+    const { getAllItems, getItemsHistory } = useStoreContext();
 
     useEffect(() => {
         async function fetchItemsData() {
             setIsLoading(true);
 
-            const histories = {} as ItemHistoryModel;
-
             await getAllItems();
-            await Promise.all(
-                selectedItems.map(async item => {
-                    const history = await getItemHistory(item);
-                    if (history) {
-                        histories[item] = history;
-                    }
-                })
-            );
-            setItemHistories(histories);
+            await getItemsHistory();
 
             setIsLoading(false);
         }
@@ -54,7 +42,7 @@ const TrackItems = () => {
 
     return (
         <BasicLayout title={localization.trackItemsTitle} actions={actions}>
-            <Cards items={allItems} itemHistories={itemHistories} />
+            <Cards />
         </BasicLayout>
     );
 };
