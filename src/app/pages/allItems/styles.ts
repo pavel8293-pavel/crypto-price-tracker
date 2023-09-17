@@ -18,10 +18,4 @@ export const useAllItemsStyles = makeStyles(theme => ({
         gap: theme.spacing(2),
         marginBottom: theme.spacing(2),
     },
-    emptyScreen: {
-        display: "flex",
-        justifyContent: "center",
-        marginTop: theme.spacing(2),
-        height: "70vh",
-    },
 }));

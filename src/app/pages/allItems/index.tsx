@@ -5,7 +5,6 @@ import { localization } from "../../localization";
 import TrackSelectedItemsButton from "./trackSelectedItemsButton";
 import ItemCard from "./itemCard";
 import { useAllItemsStyles } from "./styles";
-import { Typography } from "@material-ui/core";
 import ResetAllButton from "../../components/resetAllButton";
 import { FullscreenLoader } from "../../components/fullscreenLoader";
 
@@ -29,7 +28,7 @@ const AllItems = () => {
 
     const content = useMemo(() => {
         if (!allItems.length) {
-            return <Typography variant="h5" className={styles.emptyScreen}>{localization.thereIsNoItemsMessage}</Typography>;
+            return null;
         }
 
         return (
@@ -39,7 +38,7 @@ const AllItems = () => {
                 })}
             </div>
         );
-    }, [allItems, styles.container, styles.emptyScreen]);
+    }, [allItems, styles.container]);
 
     const actions = useMemo(() => {
         return (
