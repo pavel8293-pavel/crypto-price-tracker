@@ -5,13 +5,15 @@ import { localization } from "../../localization";
 import TrackSelectedItemsButton from "./trackSelectedItemsButton";
 import ItemCard from "./itemCard";
 import { useAllItemsStyles } from "./styles";
-import clsx from "clsx";
+import { Typography } from "@material-ui/core";
 import ResetAllButton from "../../components/resetAllButton";
 import { FullscreenLoader } from "../../components/fullscreenLoader";
 
 const AllItems = () => {
     const styles = useAllItemsStyles();
+
     const [isLoading, setIsLoading] = useState(false);
+
     const { allItems, getAllItems } = useStoreContext();
 
     useEffect(() => {
@@ -27,7 +29,7 @@ const AllItems = () => {
 
     const content = useMemo(() => {
         if (!allItems.length) {
-            return null;
+            return <Typography variant="h5" className={styles.emptyScreen}>{localization.thereIsNoItemsMessage}</Typography>;
         }
 
         return (
@@ -37,16 +39,16 @@ const AllItems = () => {
                 })}
             </div>
         );
-    }, [allItems, styles.container]);
+    }, [allItems, styles.container, styles.emptyScreen]);
 
     const actions = useMemo(() => {
         return (
-            <div className={clsx(styles.container, styles.buttons)}>
+            <div className={styles.buttons}>
                 <TrackSelectedItemsButton />
                 <ResetAllButton />
             </div>
         );
-    }, [styles.buttons, styles.container]);
+    }, [styles.buttons]);
 
     if (isLoading) {
         <FullscreenLoader />;

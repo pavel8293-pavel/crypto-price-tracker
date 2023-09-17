@@ -1,15 +1,18 @@
 import { ItemEntity, ItemHistory } from "../../interfaces";
-import Button from "../../uiKit/buttons/button";
 import { localization } from "../../localization";
-import { useCallback, useMemo } from "react";
-import { useStoreContext } from "../../StoreProvider";
+import { memo, useMemo } from "react";
 import { Typography, Avatar } from "@material-ui/core";
 import { formatCurrency, formatPercentNumber } from "../../helpers";
 import Chip from "../../uiKit/chip";
-import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import LabelValuePair from "../../components/labelValuePair";
 import { useCardWithChartStyles } from "./styles";
 import HistoryChart from "../../components/historyChart";
+import SelectItemButton from "../selectItemButton";
+
+interface CardProps extends ItemEntity {
+    itemHistory: ItemHistory;
+    canSelect?: boolean;
+}
 
 const CardWithChart = ({
     image,
@@ -18,24 +21,18 @@ const CardWithChart = ({
     symbol,
     currentPrice,
     priceChangePercentage24h,
-    itemHistory
-}: ItemEntity & {itemHistory: ItemHistory}) => {
+    itemHistory,
+    id,
+    canSelect = true,
+}: CardProps) => {
     const styles = useCardWithChartStyles();
-
-    const { checkIfItemSelected, removeItem, setItem } = useStoreContext();
-
     const isPositiveChange = priceChangePercentage24h >= 0;
-    const isCardSelected = checkIfItemSelected(symbol);
-
     const chipPalette = isPositiveChange ? "green" : "red";
-    const buttonPalette = isCardSelected ? "primary" : "green";
 
     const formattedCurrentPrice = formatCurrency(currentPrice);
     const formattedHighestPrice = formatCurrency(highestPrice);
     const formattedLowestPrice = formatCurrency(lowestPrice);
     const formattedPercentage = formatPercentNumber(priceChangePercentage24h);
-
-    const label = isCardSelected ? localization.unselectButton : localization.selectButton;
 
     const valuePairsContent = useMemo(() => {
         const valuePairs = [
@@ -66,13 +63,6 @@ const CardWithChart = ({
         styles.chip,
     ]);
 
-    const onClick = useCallback(() => {
-        if (isCardSelected) {
-            return removeItem(symbol);
-        }
-        return setItem(symbol);
-    }, [isCardSelected, symbol, removeItem, setItem]);
-
     return (
         <div>
             <div className={styles.infoContainer}>
@@ -81,17 +71,11 @@ const CardWithChart = ({
                     <Typography>{symbol.toUpperCase()}</Typography>
                 </div>
                 <div className={styles.valuePairsContainer}>{valuePairsContent}</div>
-                <Button
-                    endIcon={<ArrowRightAltIcon />}
-                    label={label}
-                    palette={buttonPalette}
-                    size="m"
-                    onClick={onClick}
-                />
+                {canSelect && <SelectItemButton id={id} size="m" />}
             </div>
             <HistoryChart chartData={itemHistory} />
         </div>
     );
 };
 
-export default CardWithChart;
+export default memo(CardWithChart);

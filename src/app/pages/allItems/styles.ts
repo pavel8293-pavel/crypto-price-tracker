@@ -2,20 +2,26 @@ import { makeStyles } from "@material-ui/core";
 
 export const useAllItemsStyles = makeStyles(theme => ({
     container: {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        gap: theme.spacing(2),
-        margin: theme.spacing(2),
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, 212px)",
+        gridGap: theme.spacing(2),
+        justifyContent: "center",
+        margin: theme.spacing(3),
 
         [theme.breakpoints.down("xs")]: {
             justifyContent: "space-around",
+            gridTemplateColumns: "repeat(auto-fill, 100%)",
         },
     },
     buttons: {
+        display: "flex",
         gap: theme.spacing(2),
-        marginBottom: theme.spacing(1),
+        marginBottom: theme.spacing(2),
+    },
+    emptyScreen: {
+        display: "flex",
+        justifyContent: "center",
+        marginTop: theme.spacing(2),
+        height: "70vh",
     },
 }));

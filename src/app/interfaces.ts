@@ -16,6 +16,10 @@ export interface ItemHistory {
     [key: string]: number;
 }
 
+export interface ItemHistoryModel {
+    [key: string]: ItemHistory
+}
+
 export interface CoinPriceModel {
     [key: string]: {
         [key: string]: number;
@@ -23,11 +27,9 @@ export interface CoinPriceModel {
 }
 
 export interface UseStore extends UseStorage {
-    allItems: ItemEntity[];
-    getCoinPrices: () => Promise<void>;
+    allItems: ItemEntity[]
     getAllItems: () => Promise<void>;
-    getItemHistory: (id: string, days?: number) => Promise<ItemHistory>;
-    itemPrices?: CoinPriceModel;
+    getItemHistory: (id: string, days?: number) => Promise<ItemHistory | undefined>;
 }
 
 export interface UseStorage {

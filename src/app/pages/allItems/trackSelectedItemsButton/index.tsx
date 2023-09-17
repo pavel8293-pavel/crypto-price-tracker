@@ -14,9 +14,8 @@ const TrackSelectedItemsButton = () => {
         <Button
             label={localization.trackSelectedItemsButton(selectedItems.length)}
             onClick={onClick}
-            palette="yellow"
+            palette="green"
             disabled={!selectedItems.length}
-            variant="outlined"
         />
     );
 };

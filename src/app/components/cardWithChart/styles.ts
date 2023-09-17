@@ -15,6 +15,7 @@ export const useCardWithChartStyles = makeStyles(theme => ({
             flexDirection: "column",
             alignItems: "center",
             gap: theme.spacing(4),
+            padding: theme.spacing(3, 0),
         },
     },
     avatarContainer: {
