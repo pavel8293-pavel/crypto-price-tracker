@@ -9,6 +9,7 @@ export const DEFAULT_CURRENCY = "usd";
 export const EN_LANG = "en-GB";
 export const GET_COIN_PRICES_INTERVAL_MIL_SEC = 60000;
 export const DEFAULT_HISTORY_DAYS = 10;
+export const MAX_TRACK_ITEMS_COUNT = 10;
 export const DATE_FORMAT = "dd/MM/yyyy";
 
 // styles constants

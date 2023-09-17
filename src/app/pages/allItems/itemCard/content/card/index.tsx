@@ -1,35 +1,21 @@
 import { ItemEntity } from "../../../../../interfaces";
-import Button from "../../../../../uiKit/buttons/button";
-import { localization } from "../../../../../localization";
-import { memo, useCallback } from "react";
-import { useStoreContext } from "../../../../../StoreProvider";
+import { memo } from "react";
 import { Typography, Avatar } from "@material-ui/core";
 import { formatCurrency, formatPercentNumber } from "../../../../../helpers";
 import Chip from "../../../../../uiKit/chip";
-import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import { useCardContentStyles } from "./styles";
+import SelectItemButton from "../../../../../components/selectItemButton";
 
-const CardContent = ({ image, currentPrice, priceChangePercentage24h, symbol }: ItemEntity) => {
+const CardContent = ({ image, currentPrice, priceChangePercentage24h, id, symbol }: ItemEntity) => {
     const styles = useCardContentStyles();
-    const { checkIfItemSelected, removeItem, setItem } = useStoreContext();
 
     const isPositiveChange = priceChangePercentage24h >= 0;
-    const isCardSelected = checkIfItemSelected(symbol);
 
     const chipPalette = isPositiveChange ? "green" : "red";
-    const buttonPalette = isCardSelected ? "primary" : "green";
 
     const formattedPrice = formatCurrency(currentPrice);
     const formattedPercentage = formatPercentNumber(priceChangePercentage24h);
 
-    const label = isCardSelected ? localization.unselectButton : localization.selectButton;
-
-    const onClick = useCallback(() => {
-        if (isCardSelected) {
-            return removeItem(symbol);
-        }
-        return setItem(symbol);
-    }, [isCardSelected, symbol, removeItem, setItem]);
 
     return (
         <div className={styles.root}>
@@ -40,13 +26,7 @@ const CardContent = ({ image, currentPrice, priceChangePercentage24h, symbol }: 
             <div className={styles.infoContainer}>
                 <Chip text={formattedPercentage} palette={chipPalette} className={styles.chip} />
                 <Chip text={formattedPrice} palette={chipPalette} className={styles.chip} />
-                <Button
-                    onClick={onClick}
-                    endIcon={<ArrowRightAltIcon />}
-                    label={label}
-                    palette={buttonPalette}
-                    size="s"
-                />
+                <SelectItemButton id={id} />
             </div>
         </div>
     );

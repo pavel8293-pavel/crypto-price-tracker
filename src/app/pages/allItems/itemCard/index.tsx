@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const ItemCard = (props: ItemEntity) => {
     const [isOpened, setIsOpened] = useState(false);
+
     const onCloseDialog = () => setIsOpened(false);
     const onOpenDialog = () => setIsOpened(true);
 

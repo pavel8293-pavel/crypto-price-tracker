@@ -5,7 +5,7 @@ export const useCardStyles = makeStyles(theme => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        width: "200px",
+        width: "100%",
         padding: theme.spacing(1.5),
         boxSizing: "border-box",
         boxShadow: "none",
