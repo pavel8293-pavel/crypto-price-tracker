@@ -3,16 +3,16 @@ import { UseStore } from "./interfaces";
 import { useStore } from "./hooks/useStore";
 
 const StoreContext = React.createContext<UseStore>({
-    allCoins: undefined,
-    allCoinsKeys: [],
-    selectedCoins: [],
+    allItems: [],
+    selectedItems: [],
+    itemsHistory: undefined,
     removeItem: () => void 0,
     removeItems: () => void 0,
     setItem: () => void 0,
-    checkIfCoinSelected: () => false,
-    getCoinPrices: async () => void 0,
-    getAllCoins: async () => void 0,
-    coinPrices: undefined,
+    checkIfItemSelected: () => false,
+    getAllItems: async () => void 0,
+    getItemsHistory: async () => void 0,
+    getItemHistory: async () => undefined,
 });
 
 export const StoreProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {

@@ -36,7 +36,7 @@ export const usePaperClasses = makeStyles<Theme>(theme => ({
         height: "100%",
         overflow: "auto",
         "&.MuiPaper-root": {
-            background: applicationPalettes.yellow[100],
+            background: applicationPalettes.green[1],
         },
         "&.MuiPaper-rounded": {
             borderRadius: theme.spacing(2),

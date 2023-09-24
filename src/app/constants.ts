@@ -2,11 +2,15 @@ import { ApplicationColorPalette, Color } from "./interfaces";
 
 // API constants
 
-export const CRYPTO_COMPARE_API_URI = "https://min-api.cryptocompare.com/data";
-export const CRYPTO_COMPARE_IMAGES_URI = "https://www.cryptocompare.com";
+export const CRYPTO_COINS_PUBLIC_API_URI = "https://api.coingecko.com/api/v3/";
 
 export const ISO_CURRENCIES = ["USD", "EUR", "GBP"];
+export const DEFAULT_CURRENCY = "usd";
+export const EN_LANG = "en-GB";
 export const GET_COIN_PRICES_INTERVAL_MIL_SEC = 60000;
+export const DEFAULT_HISTORY_DAYS = 10;
+export const MAX_TRACK_ITEMS_COUNT = 10;
+export const DATE_FORMAT = "dd/MM/yyyy";
 
 // styles constants
 
@@ -42,6 +46,16 @@ export const applicationPalettes: {
         "600": "#CEA80A",
         "700": "#A38000",
         "800": "#7C5D00",
+    },
+    red: {
+        "1": "#FFF6F6",
+        "50": "#FDDCDA",
+        "100": "#FCCBC8",
+        "200": "#FAA9A3",
+        "500": "#F44336",
+        "600": "#C8372D",
+        "700": "#9C2B23",
+        "800": "#6F1F19",
     },
 };
 

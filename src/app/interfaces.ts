@@ -1,30 +1,23 @@
+import { TypographyVariant } from "@material-ui/core";
+
 // API interfaces
-export interface CoinEntity {
-    Id: string;
-    Url: string;
-    ImageUrl: string;
-    Name: string;
-    CoinName: string;
-    FullName: string;
-    Description: string;
-}
-
-export interface UpdatedCoinEntity {
+export interface ItemEntity {
     id: string;
-    url: string;
-    imageUrl: string;
+    symbol: string;
     name: string;
-    coinName: string;
-    fullName: string;
-    description: string;
+    image: string;
+    currentPrice: number;
+    highestPrice: number;
+    lowestPrice: number;
+    priceChangePercentage24h: number;
 }
 
-export interface UpdatedNormalizedCoinEntity {
-    [key: keyof NormalizedCoinEntity]: UpdatedCoinEntity;
+export interface ItemHistory {
+    [key: string]: number;
 }
 
-export interface NormalizedCoinEntity {
-    [key: string]: CoinEntity;
+export interface ItemHistoryModel {
+    [key: string]: ItemHistory;
 }
 
 export interface CoinPriceModel {
@@ -33,26 +26,25 @@ export interface CoinPriceModel {
     };
 }
 
-export interface UseStore extends UseCoinStorage {
-    allCoins: UpdatedNormalizedCoinEntity | undefined;
-    allCoinsKeys: string[];
-    getCoinPrices: () => Promise<void>;
-    getAllCoins: () => Promise<void>;
-    coinPrices?: CoinPriceModel;
+export interface UseStore extends UseStorage {
+    allItems: ItemEntity[];
+    itemsHistory: ItemHistoryModel | undefined;
+    getAllItems: () => Promise<void>;
+    getItemsHistory: (days?: number) => Promise<void>;
+    getItemHistory: (id: string, days?: number) => Promise<ItemHistory | undefined>;
 }
 
-export interface UseCoinStorage {
-    selectedCoins: string[];
+export interface UseStorage {
+    selectedItems: string[];
     removeItem: (item: string) => void;
     removeItems: () => void;
     setItem: (item: string) => void;
-    checkIfCoinSelected: (item: string) => boolean;
+    checkIfItemSelected: (item: string) => boolean;
 }
-
 
 // style interfaces
 
-export type ApplicationColorPalette = "primary" | "green" | "yellow";
+export type ApplicationColorPalette = "primary" | "green" | "yellow" | "red";
 
 export interface Color {
     1: string;
@@ -74,11 +66,32 @@ export interface StylesProps {
 
 export interface ButtonStyle {
     id?: string;
-    label: React.ReactText;
+    label?: React.ReactText;
     palette?: ApplicationColorPalette;
     size?: ButtonSize;
     className?: string;
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+    onClick?: () => void | Promise<void>;
     startIcon?: React.ReactNode;
+    endIcon?: React.ReactNode;
+    disabled?: boolean;
+    variant?: "contained" | "outlined";
+}
+
+export interface ChipProps {
+    text?: React.ReactNode;
+    size?: "small" | "medium";
+    palette?: ApplicationColorPalette;
+    className?: string;
+    textColorVariant?: keyof Color;
+    backgroundVariant?: keyof Color;
+}
+
+export interface LabelValuePairProps {
+    value: React.ReactNode;
+    label: React.ReactText;
+    labelClassName?: string;
+    typographyLabelVariant?: Exclude<TypographyVariant, "button">;
+    typographyValueVariant?: Exclude<TypographyVariant, "button">;
+    tooltip?: string;
     disabled?: boolean;
 }

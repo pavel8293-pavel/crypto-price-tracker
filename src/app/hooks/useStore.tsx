@@ -1,41 +1,67 @@
+import { apiGetAllItems } from "../api/apiGetAllItems";
+import { ItemEntity, ItemHistory, ItemHistoryModel, UseStore } from "../interfaces";
+import { useStorage } from "./useStorage";
+import { DEFAULT_HISTORY_DAYS } from "../constants";
+import { transformItemHistory, transformItems } from "../helpers";
+import { apiGetItemHistory } from "../api/apiGetItemHistory";
 import { useState } from "react";
-import { apiGetAllCoins } from "../api/apiGetAllCoins";
-import { UseStore, UpdatedNormalizedCoinEntity, CoinPriceModel } from "../interfaces";
-import { transformCoinData } from "../helpers";
-import { useCoinStorage } from "./useCoinStorage";
-import { apiGetCoinPrices } from "../api/apiGetCoinPrices";
-import { ISO_CURRENCIES } from "../constants";
+import { showErrorToast } from "../components/errorToast";
+import { localization } from "../localization";
+import { isEmpty } from "lodash";
 
 export const useStore = (): UseStore => {
-    const [allCoins, setAllCoins] = useState<UpdatedNormalizedCoinEntity | undefined>(undefined);
-    const [allCoinsKeys, setAllCoinsKeys] = useState<string[]>([]);
+    const [allItems, setAllItems] = useState<ItemEntity[]>([]);
+    const [itemsHistory, setItemsHistory] = useState<ItemHistoryModel | undefined>(undefined);
 
-    const [coinPrices, setCoinPrices] = useState<CoinPriceModel | undefined>(undefined);
+    const { selectedItems, removeItem, setItem, checkIfItemSelected, removeItems } = useStorage();
 
-    const { selectedCoins, removeItem, setItem, checkIfCoinSelected, removeItems } = useCoinStorage();
-
-    async function getCoinPrices() {
-        const prices = await apiGetCoinPrices({ coinsToCompare: selectedCoins, priceCurrencies: ISO_CURRENCIES });
-        setCoinPrices(prices);
+    async function getItemHistory(
+        id: string,
+        days = DEFAULT_HISTORY_DAYS
+    ): Promise<ItemHistory | undefined> {
+        try {
+            const history = await apiGetItemHistory({ id, days });
+            return transformItemHistory(history);
+        } catch (e) {
+            showErrorToast(localization.generalErrorMessage);
+        }
     }
 
-    async function getAllCoins() {
-        const coins = await apiGetAllCoins();
-        const { transformedCoins, coinsKeys } = transformCoinData(coins.Data);
-        setAllCoins(transformedCoins);
-        setAllCoinsKeys(coinsKeys);
+    async function getItemsHistory(days?: number) {
+        const histories = {} as ItemHistoryModel;
+        await Promise.all(
+            selectedItems.map(async item => {
+                const history = await getItemHistory(item, days);
+                if (history) {
+                    histories[item] = history;
+                }
+            })
+        );
+        if (!isEmpty(histories)) {
+            setItemsHistory(histories);
+        }
+    }
+
+    async function getAllItems() {
+        try {
+            const items = await apiGetAllItems();
+            const transformedItems = transformItems(items);
+            setAllItems(transformedItems);
+        } catch (e) {
+            showErrorToast(localization.generalErrorMessage);
+        }
     }
 
     return {
-        allCoins,
-        allCoinsKeys,
-        getAllCoins,
-        selectedCoins,
+        allItems,
+        itemsHistory,
+        getAllItems,
+        getItemsHistory,
+        getItemHistory,
+        selectedItems,
         removeItem,
         setItem,
-        checkIfCoinSelected,
+        checkIfItemSelected,
         removeItems,
-        getCoinPrices,
-        coinPrices,
     };
 };

@@ -2,20 +2,20 @@ import { lazy } from "react";
 import RouteValue from "./interface";
 import routeNames from "./routeNames";
 
-const AllCurrencies = lazy(() => import("../allCoins"));
-const TrackCurrencies = lazy(() => import("../trackCoins"));
+const AllItems = lazy(() => import("../pages/allItems"));
+const TrackItems = lazy(() => import("../pages/trackItems"));
 
 const routes: RouteValue[] = [
     {
-        name: routeNames.ALL_COINS,
-        path: routeNames.ALL_COINS,
+        name: routeNames.ALL_ITEMS,
+        path: routeNames.ALL_ITEMS,
         exact: true,
-        component: AllCurrencies,
+        component: AllItems,
     },
     {
-        name: routeNames.TRACK_COINS,
-        path: routeNames.TRACK_COINS,
-        component: TrackCurrencies,
+        name: routeNames.TRACK_ITEMS,
+        path: routeNames.TRACK_ITEMS,
+        component: TrackItems,
     },
 ];
 
